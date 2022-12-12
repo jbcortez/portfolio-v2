@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 interface Props {
@@ -7,13 +7,38 @@ interface Props {
 }
 
 const FramedImage: React.FC<Props> = ({ src, alt }) => {
+  const frameRef = useRef<HTMLDivElement | null>(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const frame = frameRef.current;
+
+    if (frame) {
+      setHeight(frame.offsetHeight);
+    }
+  }, []);
+
+  const handleResize = () => {
+    if (frameRef.current) {
+      setHeight(frameRef.current?.getBoundingClientRect().height);
+    }
+  };
+
   return (
     <Container>
-      <Frame>
-        <FrameAccent>
+      <FrameAccent height={height}>
+        <Frame ref={frameRef}>
           <Image src={src} alt={alt} />
-        </FrameAccent>
-      </Frame>
+        </Frame>
+      </FrameAccent>
     </Container>
   );
 };
@@ -21,23 +46,26 @@ const FramedImage: React.FC<Props> = ({ src, alt }) => {
 export default FramedImage;
 
 const Container = styled.div`
-  width: calc(100% - 1rem);
+  width: 100%;
   margin-left: 1rem;
   padding-bottom: ${(props) => props.theme.spacing[4]};
 `;
 
-const Frame = styled.div`
+const FrameAccent = styled.div<{ height?: number }>`
   position: relative;
   border: 3px solid ${(props) => props.theme.colors.secondary};
   border-radius: 5px;
-  height: 30rem;
+  height: ${(props) => props.height}px;
   z-index: 2;
   background: ${(props) => props.theme.colors.primary};
+  width: calc(100% - 1rem);
 `;
 
-const FrameAccent = styled.div`
+const Frame = styled.div`
   position: absolute;
-  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   border: 3px solid ${(props) => props.theme.colors.secondary};
   padding: ${(props) => props.theme.spacing[3]};

@@ -43,9 +43,7 @@ const ContactForm = () => {
         />
       </FormControl>
 
-      <Button translateVariant={"two"} style={{ width: "10.6rem" }}>
-        Submit
-      </Button>
+      <Button style={{ width: "10.6rem" }}>Submit</Button>
     </Form>
   );
 };

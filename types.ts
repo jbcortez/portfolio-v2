@@ -37,6 +37,7 @@ export interface ProjectType {
   details?: string;
   variant: "primary" | "secondary";
   alt?: string;
+  tech?: string[];
 }
 
 export interface Pos {

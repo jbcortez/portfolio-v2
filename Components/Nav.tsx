@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import NavLink from "./NavLink";
 import ArrowSVG from "./ArrowSVG";
+import { SecondaryLink } from "../styles/Components";
 
 const Nav: React.FC = () => {
   return (
@@ -42,33 +43,6 @@ const NavBar = styled.nav`
   background: ${(props) => props.theme.colors.secondary};
   z-index: 1;
   padding: 4rem;
-`;
-
-const SecondaryLink = styled.div`
-  font-family: "Tusker Grotesk 5500 Medium", sans-serif;
-  font-size: 1.6rem;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-  width: fit-content;
-
-  &::after {
-    position: absolute;
-    content: "";
-    bottom: -2px;
-    left: 5px;
-    height: 1px;
-    background: ${(props) => props.theme.colors.primary};
-
-    width: 0;
-    transition: width 0.2s ease;
-  }
-
-  &:hover::after {
-    width: 100%;
-  }
 `;
 
 const SecondaryLinkContainer = styled.div`

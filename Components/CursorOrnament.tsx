@@ -41,7 +41,7 @@ const Container = styled.div.attrs<{
   interactive: boolean;
 }>((props) => ({
   style: {
-    transform: `translate(${props.x}px, ${props.y}px) `,
+    transform: `translate3d(${props.x}px, ${props.y}px, 1px) `,
   },
 }))<{ x: number; y: number; interactive: boolean; clientY: number }>`
   width: ${(props) => (props.interactive ? "3rem" : "5rem")};

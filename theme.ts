@@ -21,7 +21,7 @@ export const LightTheme: Theme = {
   colors: {
     primary: "#262626",
     secondary: "#FFF",
-    tertiary: "707FCC",
+    tertiary: "rgba(112,127,204,0.68)",
   },
   spacing: { ...spacing },
 };
@@ -30,7 +30,7 @@ export const DarkTheme: Theme = {
   colors: {
     primary: "#FFF2E3",
     secondary: "#0a4372",
-    tertiary: "#FFCD82",
+    tertiary: "rgb(255,205,130)",
   },
   spacing: { ...spacing },
 };

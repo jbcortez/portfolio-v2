@@ -1,9 +1,68 @@
+@font-face {
+  font-family: "Tusker Grotesk 2600 Semibold";
+  src: url('../asset/fonts/TuskerGrotesk-2600Semibold.otf') format('opentype');
+
+}
+
+@font-face {
+  font-family: "Tusker Grotesk 1500 Medium";
+  src: url('../asset/fonts/TuskerGrotesk-1500Medium.otf') format('opentype');
+
+}
+
+@font-face {
+  font-family: "Tusker Grotesk 2500 Medium";
+  src: url('../asset/fonts/TuskerGrotesk-2500Medium.otf') format('opentype');
+
+}
+
+@font-face {
+  font-family: "Tusker Grotesk 3600 Semibold";
+  src: url('../asset/fonts/TuskerGrotesk-3600Semibold.otf') format('opentype');
+
+}
+
+@font-face {
+  font-family: "PP Migra";
+  src: url('../asset/fonts/PPMigra-Regular.otf') format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "PP Neue Montreal";
+  src: url('../asset/fonts/PPNeueMontreal-Medium.otf') format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Migra";
+  src: url('../asset/fonts/Migra-Extrabold.otf') format('opentype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Tusker Grotesk 5500 Medium";
+  src: url('../asset/fonts/TuskerGrotesk-5500Medium.otf') format('opentype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Tusker Grotesk 5500 Medium";
+  src: url('../asset/fonts/TuskerGrotesk-6500Medium.otf') format('opentype');
+  font-weight: 600;
+}
+
+
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth !important;
+
 }
 
 a {

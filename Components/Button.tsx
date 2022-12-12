@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import styled, { css, keyframes } from "styled-components";
-import { isItemInteractive } from "../redux/siteSlice";
+import styled from "styled-components";
 import { useAppDispatch } from "../redux/reduxHooks";
 import { handleIsInteractive } from "../util/functions";
 
@@ -9,7 +8,7 @@ interface Props {
   onClick?: React.MouseEventHandler;
   children: React.ReactNode;
   style?: React.CSSProperties;
-  translateVariant?: "one" | "two";
+  variant?: "primary" | "secondary";
 }
 
 const Button: React.FC<Props> = ({
@@ -17,11 +16,19 @@ const Button: React.FC<Props> = ({
   onClick,
   children,
   style,
-  translateVariant = "one",
+  variant = "primary",
 }) => {
   const [hover, setHover] = useState<"true" | "false">("false");
+  const [width, setWidth] = useState<number>(0);
   const dispatch = useAppDispatch();
   const btnRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    const btn = btnRef.current;
+    if (hover === "false" && btn) {
+      setWidth(btn.getBoundingClientRect().width);
+    }
+  }, [hover]);
 
   const handleMouseOver = () => {
     setHover("true");
@@ -33,33 +40,83 @@ const Button: React.FC<Props> = ({
     handleIsInteractive(dispatch, false);
   };
 
-  return (
-    <ButtonStyles
-      ref={btnRef}
-      style={style}
-      fill={fill}
-      onMouseLeave={handleMouseLeave}
-      onMouseOver={handleMouseOver}
-      onClick={onClick}
-    >
-      <Span
-        width={btnRef.current?.getBoundingClientRect().width}
-        translateVariant={translateVariant}
-        hover={hover}
-      >
-        <span>{children}</span>
-        <span>{children}</span>
-      </Span>
-    </ButtonStyles>
-  );
+  const render = () => {
+    switch (variant) {
+      case "primary":
+        return (
+          <PrimaryStyles
+            hover={hover}
+            ref={btnRef}
+            style={style}
+            fill={fill}
+            onMouseLeave={handleMouseLeave}
+            onMouseOver={handleMouseOver}
+            onClick={onClick}
+            width={width}
+          >
+            {hover === "true" ? (
+              <>
+                <Span hover={hover} width={width}>
+                  <span>{children}</span>
+                  <span>{children}</span>
+                </Span>
+              </>
+            ) : (
+              <>{children}</>
+            )}
+          </PrimaryStyles>
+        );
+      case "secondary":
+        return (
+          <SecondaryStyles
+            hover={hover}
+            ref={btnRef}
+            style={style}
+            fill={fill}
+            onMouseLeave={handleMouseLeave}
+            onMouseOver={handleMouseOver}
+            onClick={onClick}
+            width={width}
+          >
+            {hover === "true" ? (
+              <>
+                <Span hover={hover} width={width}>
+                  <span>{children}</span>
+                  <span>{children}</span>
+                </Span>
+              </>
+            ) : (
+              <>{children}</>
+            )}
+          </SecondaryStyles>
+        );
+      default:
+        return;
+    }
+  };
+
+  return <>{render()}</>;
 };
 
 export default Button;
 
 const ButtonStyles = styled.button<{
   fill: "true" | "false";
+  hover: "true" | "false";
+  width: number;
 }>`
-  border: 1px solid ${(props) => props.theme.colors.primary};
+  text-transform: uppercase;
+  font-size: 2rem;
+  display: flex;
+  white-space: nowrap;
+  border-radius: 2.5rem;
+  padding: 0.8rem 1.4rem;
+  cursor: pointer;
+  overflow: hidden;
+  width: ${(props) => (props.width ? props.width + "px" : "fit-content")};
+`;
+
+const PrimaryStyles = styled(ButtonStyles)`
   color: ${(props) =>
     props.fill === "true"
       ? props.theme.colors.secondary
@@ -68,52 +125,38 @@ const ButtonStyles = styled.button<{
     props.fill === "true"
       ? props.theme.colors.primary
       : props.theme.colors.secondary};
-  text-transform: uppercase;
-  font-size: 2rem;
-  width: 17.3rem;
-  display: flex;
-  white-space: nowrap;
-  border-radius: 2.5rem;
-  padding: 0.8rem 1.4rem;
-  cursor: pointer;
-  overflow: hidden;
+  border: 1px solid ${(props) => props.theme.colors.primary};
 `;
 
-const variantOne = keyframes`
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-53.5%);
-  }
+const SecondaryStyles = styled(ButtonStyles)`
+  color: ${(props) =>
+    props.fill === "true"
+      ? props.theme.colors.primary
+      : props.theme.colors.secondary};
+  background: ${(props) =>
+    props.fill === "true"
+      ? props.theme.colors.secondary
+      : props.theme.colors.primary};
+  border: 1px solid ${(props) => props.theme.colors.secondary};
 `;
-
-const variantTwo = keyframes`
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-56%);
-  }
-`;
-
-// @ts-ignore
-const animation = (props) =>
-  css`
-    ${props.translateVariant === "one"
-      ? variantOne
-      : variantTwo} ${props.width / 150}s linear infinite;
-  `;
 
 const Span = styled.span<{
   hover: "true" | "false";
-  translateVariant: "one" | "two";
-  width?: number;
+  width: number;
 }>`
   display: block;
-  animation: ${(props) => props.hover === "true" && animation};
+  animation: buttonScroll ${(props) => props.width / 150}s linear infinite;
 
   & > *:not(:last-child) {
-    padding-right: 2rem;
+    padding-right: ${(props) => props.width / 10}px;
+  }
+
+  @keyframes buttonScroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-53.5%);
+    }
   }
 `;
