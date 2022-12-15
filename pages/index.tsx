@@ -28,6 +28,12 @@ export default function Home() {
     <ThemeProvider theme={theme === "dark" ? DarkTheme : LightTheme}>
       <Head>
         <title>Justin Cortez - Home</title>
+        <meta
+          property={"og:image"}
+          content={
+            "https://oceanapps.nyc3.cdn.digitaloceanspaces.com/justin-cortez.png"
+          }
+        />
       </Head>
 
       <PageStyles>
