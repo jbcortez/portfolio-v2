@@ -1,11 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import { useAppDispatch } from "../redux/reduxHooks";
-import { setShowNav } from "../redux/siteSlice";
+import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
+import { setShowNav, showNavExitAnimation } from "../redux/siteSlice";
 import { handleIsInteractive } from "../util/functions";
+import { NAV_ANIMATION_DURATION } from "../util/enums";
 
 const Hamburger: React.FC = () => {
-  const [active, setActive] = useState<boolean>(false);
+  const showNav = useAppSelector((state) => state.site.showNav);
   const [hover, setHover] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const hasBeenActivated = useRef<boolean>(false);
@@ -20,22 +21,22 @@ const Hamburger: React.FC = () => {
     setHover(false);
   };
 
-  const toggleActive = () => {
-    setActive(!active);
+  const toggleActive = (e: React.MouseEvent) => {
+    if (showNav) {
+      dispatch(showNavExitAnimation({ showNavExitAnimation: true }));
+      setTimeout(() => {
+        dispatch(setShowNav({ showNav: false }));
+        dispatch(showNavExitAnimation({ showNavExitAnimation: false }));
+      }, NAV_ANIMATION_DURATION);
+    } else {
+      dispatch(setShowNav({ showNav: true }));
+    }
     hasBeenActivated.current = true;
   };
 
-  useEffect(() => {
-    if (active) {
-      dispatch(setShowNav({ showNav: true }));
-    } else {
-      dispatch(setShowNav({ showNav: false }));
-    }
-  });
-
   return (
     <Container
-      active={active}
+      active={showNav}
       hover={hover}
       onClick={toggleActive}
       onMouseOver={handleMouseOver}
@@ -43,7 +44,7 @@ const Hamburger: React.FC = () => {
     >
       <Icon
         hover={hover}
-        active={active}
+        active={showNav}
         hasBeenActivated={hasBeenActivated.current}
       />
     </Container>
@@ -85,7 +86,7 @@ const Icon = styled.div<{
           : "fadeIn .5s ease"
         : "none"}
     forwards;
-  animation-delay: ${(props) => (props.active ? "0" : ".3s")};
+  animation-delay: ${(props) => (props.active ? "0" : ".2s")};
 
   &::before {
     position: absolute;
@@ -96,7 +97,6 @@ const Icon = styled.div<{
     content: "";
     background: ${(props) => props.theme.colors.primary};
     transform: rotate(${(props) => (props.active ? "45deg" : "0")});
-
     transition: all 0.2s ease;
   }
 

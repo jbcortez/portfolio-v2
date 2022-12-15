@@ -19,9 +19,9 @@ const spacing: Spacing = {
 
 export const LightTheme: Theme = {
   colors: {
-    primary: "#262626",
-    secondary: "#FFF",
-    tertiary: "rgba(112,127,204,0.68)",
+    primary: "#242424",
+    secondary: "#a2ceff",
+    tertiary: "rgb(242,255,15)",
   },
   spacing: { ...spacing },
 };

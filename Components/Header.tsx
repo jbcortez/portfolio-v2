@@ -1,15 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 import Hamburger from "./Hamburger";
-import { Container, SecondaryLink } from "../styles/Components";
+import { Container } from "../styles/Components";
 import { useMediaQuery } from "@mui/material";
 import { handleIsInteractive } from "../util/functions";
-import { useAppDispatch } from "../redux/reduxHooks";
-import Link from "next/link";
+import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
+import { handleNavMenu } from "../util/functions";
+import { NAV_ANIMATION_DURATION } from "../util/enums";
+import ThemeToggle from "./ThemeToggle";
 
-const Header: React.FC = () => {
+interface Props {
+  pageRefs?: React.RefObject<HTMLElement>[];
+}
+
+const Header: React.FC<Props> = ({ pageRefs = [] }) => {
+  const [heroRef, skillsRef, projectsRef, aboutRef, contactRef] = pageRefs;
   const desktop = useMediaQuery("(min-width: 55em)");
   const showTitle = useMediaQuery("(min-width: 40rem");
+  const showNav = useAppSelector((state) => state.site.showNav);
   const dispatch = useAppDispatch();
 
   const handleMouseOver = () => {
@@ -20,36 +28,65 @@ const Header: React.FC = () => {
     handleIsInteractive(dispatch, false);
   };
 
+  const handleHeroLink = () => {
+    if (showNav) handleNavMenu(dispatch, showNav);
+
+    if (heroRef?.current)
+      heroRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleProjectsLink = () => {
+    if (projectsRef.current)
+      projectsRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleAboutLink = () => {
+    if (aboutRef.current)
+      aboutRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleContactLink = () => {
+    if (contactRef.current)
+      contactRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <HeaderStyles>
       <ContainerStyles>
         <Row>
-          <Link href={"/"}>
+          <a style={{ cursor: "pointer" }} onClick={handleHeroLink}>
             <Logo>Justin Cortez</Logo>
-          </Link>
+          </a>
           {showTitle && <SecondaryLogo>Frontend Developer</SecondaryLogo>}
         </Row>
 
         {desktop ? (
           <NavLinks>
-            <NavLink
-              onMouseOver={handleMouseOver}
-              onMouseLeave={handleMouseLeave}
-            >
-              <LinkNumber>01.</LinkNumber> <span>Projects</span>
-            </NavLink>
-            <NavLink
-              onMouseOver={handleMouseOver}
-              onMouseLeave={handleMouseLeave}
-            >
-              <LinkNumber>02.</LinkNumber> <span>About Me</span>
-            </NavLink>
-            <NavLink
-              onMouseOver={handleMouseOver}
-              onMouseLeave={handleMouseLeave}
-            >
-              <LinkNumber>03.</LinkNumber> <span>Contact</span>
-            </NavLink>
+            <a onClick={handleProjectsLink}>
+              <NavLink
+                onMouseOver={handleMouseOver}
+                onMouseLeave={handleMouseLeave}
+              >
+                <LinkNumber>01.</LinkNumber> <span>Projects</span>
+              </NavLink>
+            </a>
+            <a onClick={handleAboutLink}>
+              <NavLink
+                onMouseOver={handleMouseOver}
+                onMouseLeave={handleMouseLeave}
+              >
+                <LinkNumber>02.</LinkNumber> <span>About Me</span>
+              </NavLink>
+            </a>
+
+            <a onClick={handleContactLink}>
+              <NavLink
+                onMouseOver={handleMouseOver}
+                onMouseLeave={handleMouseLeave}
+              >
+                <LinkNumber>03.</LinkNumber> <span>Contact</span>
+              </NavLink>
+            </a>
             <NavLink
               highlight={true}
               onMouseOver={handleMouseOver}
@@ -57,9 +94,13 @@ const Header: React.FC = () => {
             >
               <LinkNumber>04.</LinkNumber> <Highlight>Resume</Highlight>
             </NavLink>
+            <ThemeToggle />
           </NavLinks>
         ) : (
-          <Hamburger />
+          <Row>
+            <ThemeToggle />
+            <Hamburger />
+          </Row>
         )}
       </ContainerStyles>
       <Divider />
@@ -72,6 +113,7 @@ export default Header;
 const Row = styled.div`
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 
   & > *:not(:last-child) {
     margin-right: ${(props) => props.theme.spacing[6]};

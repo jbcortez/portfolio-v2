@@ -1,24 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import Button from "./Button";
-import { useAppDispatch } from "../redux/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
 import { handleIsInteractive } from "../util/functions";
+import Modal from "./Modal";
+import { Cover } from "../styles/Components";
+import useResetFormOnSubmit from "../hooks/useResetFormOnSubmit";
+import useClearTimeout from "../hooks/useClearTimeout";
+import { ThemeType } from "../types";
 
 const ContactForm = () => {
   const dispatch = useAppDispatch();
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data: unknown) => {
-    console.log("form data: ", data);
+  const themeMode = useAppSelector((state) => state.site.theme);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [timer, setTimer] = useState(null);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState,
+    formState: { isSubmitSuccessful },
+  } = useForm();
+
+  const onSubmit = async (data: FieldValues) => {
+    try {
+      const result = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      const formData = await result.json();
+      console.log("data from api: ", formData);
+    } catch (e) {
+      console.error("Error submitting form: ", e);
+    }
   };
 
+  useResetFormOnSubmit(isSubmitSuccessful, reset, setShowModal, setTimer);
+  useClearTimeout(timer, showModal);
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <FormControl>
-        <Label htmlFor={"name"}>Name</Label>
+        <Label htmlFor={"name"}>Name*</Label>
         <Input
+          mode={themeMode}
           id={"name"}
           {...register("name")}
+          required={true}
           onMouseOver={() => handleIsInteractive(dispatch, true)}
           onMouseLeave={() => handleIsInteractive(dispatch, false)}
           placeholder={"Enter name"}
@@ -26,8 +55,10 @@ const ContactForm = () => {
       </FormControl>
 
       <FormControl>
-        <Label htmlFor={"email"}>Email</Label>
+        <Label htmlFor={"email"}>Email*</Label>
         <Input
+          mode={themeMode}
+          required={true}
           id={"email"}
           type={"email"}
           {...register("email")}
@@ -35,15 +66,28 @@ const ContactForm = () => {
         />
       </FormControl>
       <FormControl>
-        <Label htmlFor={"email"}>Message</Label>
+        <Label htmlFor={"email"}>Message*</Label>
         <TextArea
+          mode={themeMode}
+          required={true}
           id={"message"}
           {...register("message")}
           placeholder={"Enter message"}
         />
       </FormControl>
 
-      <Button style={{ width: "10.6rem" }}>Submit</Button>
+      <Button style={{ width: "10.6rem" }} type={"submit"}>
+        Submit
+      </Button>
+      {showModal && (
+        <>
+          <Modal>
+            Thanks for reaching out. I&apos;ll get back to you within 48 hours.
+          </Modal>
+
+          <Cover onClick={() => setShowModal(false)} />
+        </>
+      )}
     </Form>
   );
 };
@@ -57,9 +101,13 @@ const Form = styled.form`
   align-items: flex-end;
 `;
 
-const Input = styled.input`
-  background: ${(props) => props.theme.colors.primary};
-  border: none;
+const Input = styled.input<{ mode: ThemeType }>`
+  background: ${(props) =>
+    props.mode === "dark"
+      ? props.theme.colors.primary
+      : props.theme.colors.secondary};
+  border: ${(props) =>
+    props.mode === "dark" ? "none" : `3px solid ${props.theme.colors.primary}`};
   padding: ${(props) => props.theme.spacing[3]};
   border-radius: 5px;
   height: 3.9rem;
@@ -67,6 +115,10 @@ const Input = styled.input`
   margin-bottom: ${(props) => props.theme.spacing[5]};
   font-size: 1.6rem;
   font-family: "PP Neue Montreal", sans-serif;
+  color: ${(props) =>
+    props.mode === "dark"
+      ? props.theme.colors.secondary
+      : props.theme.colors.primary};
 
   &::placeholder {
     color: rgba(0, 0, 0, 0.4);
@@ -74,9 +126,13 @@ const Input = styled.input`
   }
 `;
 
-const TextArea = styled.textarea`
-  background: ${(props) => props.theme.colors.primary};
-  border: none;
+const TextArea = styled.textarea<{ mode: ThemeType }>`
+  background: ${(props) =>
+    props.mode === "dark"
+      ? props.theme.colors.primary
+      : props.theme.colors.secondary};
+  border: ${(props) =>
+    props.mode === "dark" ? "none" : `3px solid ${props.theme.colors.primary}`};
   padding: ${(props) => props.theme.spacing[3]};
   border-radius: 5px;
   min-height: 11.7rem;
@@ -84,6 +140,10 @@ const TextArea = styled.textarea`
   margin-bottom: ${(props) => props.theme.spacing[5]};
   font-size: 1.6rem;
   font-family: "PP Neue Montreal", sans-serif;
+  color: ${(props) =>
+    props.mode === "dark"
+      ? props.theme.colors.secondary
+      : props.theme.colors.primary};
 
   &::placeholder {
     color: rgba(0, 0, 0, 0.4);

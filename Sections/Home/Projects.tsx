@@ -55,31 +55,15 @@ const projectList: ProjectType[] = [
   },
 ];
 
-const Projects: React.FC = () => {
-  return (
-    <Section>
-      <SectionTitle variant={"primary"}>
-        Some things I&apos;ve built
-      </SectionTitle>
-      {projectList
-        .filter((item) => item.variant === "primary")
-        .map((item, i) => (
-          <Project
-            key={item.title + i}
-            title={item.title}
-            description={item.description}
-            variant={item.variant}
-            alt={item.alt}
-            screenshot={item.screenshot}
-            details={item.details}
-            link={item.link}
-            github={item.github}
-            tech={item.tech}
-          />
-        ))}
-      <Row>
+const Projects = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement>>(
+  (props, ref) => {
+    return (
+      <Section id={"projects"} ref={ref}>
+        <SectionTitle variant={"primary"}>
+          Some things I&apos;ve built
+        </SectionTitle>
         {projectList
-          .filter((item) => item.variant === "secondary")
+          .filter((item) => item.variant === "primary")
           .map((item, i) => (
             <Project
               key={item.title + i}
@@ -94,10 +78,28 @@ const Projects: React.FC = () => {
               tech={item.tech}
             />
           ))}
-      </Row>
-    </Section>
-  );
-};
+        <Row>
+          {projectList
+            .filter((item) => item.variant === "secondary")
+            .map((item, i) => (
+              <Project
+                key={item.title + i}
+                title={item.title}
+                description={item.description}
+                variant={item.variant}
+                alt={item.alt}
+                screenshot={item.screenshot}
+                details={item.details}
+                link={item.link}
+                github={item.github}
+                tech={item.tech}
+              />
+            ))}
+        </Row>
+      </Section>
+    );
+  }
+);
 
 export default Projects;
 

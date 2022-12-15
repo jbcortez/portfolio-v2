@@ -129,11 +129,11 @@ export const Column = styled.div`
   flex-direction: column;
 `;
 
-export const PageStyles = styled.div<{ showNav: boolean }>`
+export const PageStyles = styled.div`
   color: ${(props) => props.theme.colors.primary};
   background: ${(props) => props.theme.colors.secondary};
   position: relative;
-  overflow: ${(props) => props.showNav && "hidden"};
+  transition: all 0.2s ease;
 
   &::after {
     position: fixed;
@@ -186,4 +186,15 @@ export const PageStyles = styled.div<{ showNav: boolean }>`
       }
     }
   }
+`;
+
+export const Cover = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
 `;

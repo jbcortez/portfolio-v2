@@ -7,138 +7,141 @@ import {
 } from "../../styles/Components";
 import { useMediaQuery } from "@mui/material";
 
-const Skills: React.FC = () => {
-  const [width, setWidth] = useState<number>(0);
-  const [rendered, setRendered] = useState<boolean>(false);
-  const [hover, setHover] = useState(false);
+// eslint-disable-next-line react/display-name
+const Skills = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement>>(
+  ({}, ref) => {
+    const [width, setWidth] = useState<number>(0);
+    const [rendered, setRendered] = useState<boolean>(false);
+    const [hover, setHover] = useState(false);
 
-  const matches = useMediaQuery("(min-width:65em)");
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const hasRendered = useRef<boolean>(false);
+    const matches = useMediaQuery("(min-width:65em)");
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const hasRendered = useRef<boolean>(false);
 
-  const handleMouseOver = () => {
-    setHover(true);
-  };
-
-  const handleMouseLeave = () => {
-    setHover(false);
-  };
-
-  useEffect(() => {
-    if (rendered) {
-      const div = sectionRef.current;
-      if (div) setWidth(div.getBoundingClientRect().width);
-    }
-  }, [rendered]);
-
-  useEffect(() => {
-    if (hasRendered.current) {
-      setRendered(true);
-    }
-
-    return () => {
-      hasRendered.current = true;
+    const handleMouseOver = () => {
+      setHover(true);
     };
-  }, []);
 
-  return (
-    <Section>
-      <SectionTitle variant={"primary"}>Skills</SectionTitle>
-      <PrimaryBackground>
-        {matches ? (
-          <>
+    const handleMouseLeave = () => {
+      setHover(false);
+    };
+
+    useEffect(() => {
+      if (rendered) {
+        const div = sectionRef.current;
+        if (div) setWidth(div.getBoundingClientRect().width);
+      }
+    }, [rendered]);
+
+    useEffect(() => {
+      if (hasRendered.current) {
+        setRendered(true);
+      }
+
+      return () => {
+        hasRendered.current = true;
+      };
+    }, []);
+
+    return (
+      <Section id={"skills"} ref={ref}>
+        <SectionTitle variant={"primary"}>Skills</SectionTitle>
+        <PrimaryBackground>
+          {matches ? (
+            <>
+              <InnerContainer>
+                <SpaceBetween ref={sectionRef}>
+                  <Span
+                    onMouseOver={handleMouseOver}
+                    onMouseLeave={handleMouseLeave}
+                    hover={hover}
+                    width={width}
+                  >
+                    <Skill>React</Skill>
+                    <Skill>TypeScript</Skill>
+                    <Skill>Javascript</Skill>
+                    <Skill>Sass</Skill>
+                    <Skill>Node</Skill>
+                    <Skill>MongoDB</Skill>
+                    <Skill>Cypress</Skill>
+                    <Skill>Figma</Skill>
+                    <Skill>React</Skill>
+                    <Skill>TypeScript</Skill>
+                    <Skill>Javascript</Skill>
+                    <Skill>Sass</Skill>
+                    <Skill>Node</Skill>
+                    <Skill>MongoDB</Skill>
+                    <Skill>Cypress</Skill>
+                    <Skill>Figma</Skill>
+                    <Skill>React</Skill>
+                    <Skill>TypeScript</Skill>
+                    <Skill>Javascript</Skill>
+                    <Skill>Sass</Skill>
+                    <Skill>Node</Skill>
+                    <Skill>MongoDB</Skill>
+                    <Skill>Cypress</Skill>
+                    <Skill>Figma</Skill>
+                  </Span>
+                </SpaceBetween>
+              </InnerContainer>
+              <Divider />
+              <InnerContainer>
+                <SpaceBetween>
+                  <ReverseSpan
+                    onMouseOver={handleMouseOver}
+                    onMouseLeave={handleMouseLeave}
+                    hover={hover}
+                    width={width}
+                  >
+                    <Skill rotate={"true"}>React</Skill>
+                    <Skill rotate={"true"}>TypeScript</Skill>
+                    <Skill rotate={"true"}>Javascript</Skill>
+                    <Skill rotate={"true"}>Sass</Skill>
+                    <Skill rotate={"true"}>Node</Skill>
+                    <Skill rotate={"true"}>MongoDB</Skill>
+                    <Skill rotate={"true"}>Cypress</Skill>
+                    <Skill rotate={"true"}>Figma</Skill>
+                    <Skill rotate={"true"}>React</Skill>
+                    <Skill rotate={"true"}>TypeScript</Skill>
+                    <Skill rotate={"true"}>Javascript</Skill>
+                    <Skill rotate={"true"}>Sass</Skill>
+                    <Skill rotate={"true"}>Node</Skill>
+                    <Skill rotate={"true"}>MongoDB</Skill>
+                    <Skill rotate={"true"}>Cypress</Skill>
+                    <Skill rotate={"true"}>Figma</Skill>
+                    <Skill rotate={"true"}>React</Skill>
+                    <Skill rotate={"true"}>TypeScript</Skill>
+                    <Skill rotate={"true"}>Javascript</Skill>
+                    <Skill rotate={"true"}>Sass</Skill>
+                    <Skill rotate={"true"}>Node</Skill>
+                    <Skill rotate={"true"}>MongoDB</Skill>
+                    <Skill rotate={"true"}>Cypress</Skill>
+                    <Skill rotate={"true"}>Figma</Skill>
+                  </ReverseSpan>
+                </SpaceBetween>
+              </InnerContainer>
+            </>
+          ) : (
             <InnerContainer>
-              <SpaceBetween ref={sectionRef}>
-                <Span
-                  onMouseOver={handleMouseOver}
-                  onMouseLeave={handleMouseLeave}
-                  hover={hover}
-                  width={width}
-                >
-                  <Skill>React</Skill>
-                  <Skill>TypeScript</Skill>
-                  <Skill>Javascript</Skill>
-                  <Skill>Sass</Skill>
-                  <Skill>Node</Skill>
-                  <Skill>MongoDB</Skill>
-                  <Skill>Cypress</Skill>
-                  <Skill>Figma</Skill>
-                  <Skill>React</Skill>
-                  <Skill>TypeScript</Skill>
-                  <Skill>Javascript</Skill>
-                  <Skill>Sass</Skill>
-                  <Skill>Node</Skill>
-                  <Skill>MongoDB</Skill>
-                  <Skill>Cypress</Skill>
-                  <Skill>Figma</Skill>
-                  <Skill>React</Skill>
-                  <Skill>TypeScript</Skill>
-                  <Skill>Javascript</Skill>
-                  <Skill>Sass</Skill>
-                  <Skill>Node</Skill>
-                  <Skill>MongoDB</Skill>
-                  <Skill>Cypress</Skill>
-                  <Skill>Figma</Skill>
-                </Span>
-              </SpaceBetween>
+              <Row>
+                <Skill>React</Skill>
+                <Skill>TypeScript</Skill>
+                <Skill>Javascript</Skill>
+                <Skill>Sass</Skill>
+              </Row>
+              <Row>
+                <Skill>Node</Skill>
+                <Skill>MongoDB</Skill>
+                <Skill>Cypress</Skill>
+                <Skill>Figma</Skill>
+              </Row>
             </InnerContainer>
-            <Divider />
-            <InnerContainer>
-              <SpaceBetween>
-                <ReverseSpan
-                  onMouseOver={handleMouseOver}
-                  onMouseLeave={handleMouseLeave}
-                  hover={hover}
-                  width={width}
-                >
-                  <Skill rotate={"true"}>React</Skill>
-                  <Skill rotate={"true"}>TypeScript</Skill>
-                  <Skill rotate={"true"}>Javascript</Skill>
-                  <Skill rotate={"true"}>Sass</Skill>
-                  <Skill rotate={"true"}>Node</Skill>
-                  <Skill rotate={"true"}>MongoDB</Skill>
-                  <Skill rotate={"true"}>Cypress</Skill>
-                  <Skill rotate={"true"}>Figma</Skill>
-                  <Skill rotate={"true"}>React</Skill>
-                  <Skill rotate={"true"}>TypeScript</Skill>
-                  <Skill rotate={"true"}>Javascript</Skill>
-                  <Skill rotate={"true"}>Sass</Skill>
-                  <Skill rotate={"true"}>Node</Skill>
-                  <Skill rotate={"true"}>MongoDB</Skill>
-                  <Skill rotate={"true"}>Cypress</Skill>
-                  <Skill rotate={"true"}>Figma</Skill>
-                  <Skill rotate={"true"}>React</Skill>
-                  <Skill rotate={"true"}>TypeScript</Skill>
-                  <Skill rotate={"true"}>Javascript</Skill>
-                  <Skill rotate={"true"}>Sass</Skill>
-                  <Skill rotate={"true"}>Node</Skill>
-                  <Skill rotate={"true"}>MongoDB</Skill>
-                  <Skill rotate={"true"}>Cypress</Skill>
-                  <Skill rotate={"true"}>Figma</Skill>
-                </ReverseSpan>
-              </SpaceBetween>
-            </InnerContainer>
-          </>
-        ) : (
-          <InnerContainer>
-            <Row>
-              <Skill>React</Skill>
-              <Skill>TypeScript</Skill>
-              <Skill>Javascript</Skill>
-              <Skill>Sass</Skill>
-            </Row>
-            <Row>
-              <Skill>Node</Skill>
-              <Skill>MongoDB</Skill>
-              <Skill>Cypress</Skill>
-              <Skill>Figma</Skill>
-            </Row>
-          </InnerContainer>
-        )}
-      </PrimaryBackground>
-    </Section>
-  );
-};
+          )}
+        </PrimaryBackground>
+      </Section>
+    );
+  }
+);
 
 export default Skills;
 

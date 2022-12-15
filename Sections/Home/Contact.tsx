@@ -3,18 +3,20 @@ import styled from "styled-components";
 import { Container, SectionTitle } from "../../styles/Components";
 import ContactForm from "../../Components/ContactForm";
 
-const Contact = () => {
-  return (
-    <Section>
-      <InnerContainer>
-        <SectionTitle style={{ textAlign: "left" }} variant={"primary"}>
-          Get in touch
-        </SectionTitle>
-        <ContactForm />
-      </InnerContainer>
-    </Section>
-  );
-};
+const Contact = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement>>(
+  (props, ref) => {
+    return (
+      <Section id={"contact"} ref={ref}>
+        <InnerContainer>
+          <SectionTitle style={{ textAlign: "left" }} variant={"primary"}>
+            Get in touch
+          </SectionTitle>
+          <ContactForm />
+        </InnerContainer>
+      </Section>
+    );
+  }
+);
 
 export default Contact;
 

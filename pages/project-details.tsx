@@ -23,7 +23,7 @@ const ProjectDetails = () => {
       </Head>
       <Header />
       {showNav && <Nav />}
-      <PageStyles style={{ paddingTop: "10rem" }} showNav={showNav}>
+      <PageStyles style={{ paddingTop: "10rem" }}>
         <Hero />
         <TechStack />
         <HowDoesItWork />

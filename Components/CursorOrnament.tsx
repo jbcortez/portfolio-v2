@@ -1,27 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  MouseEventHandler,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import styled from "styled-components";
 import { useAppSelector } from "../redux/reduxHooks";
-import useScroll from "../hooks/useScroll";
-import useClientPosition from "../hooks/useClientPosition";
+import { debounce } from "lodash";
 
 const CursorOrnament: React.FC = () => {
   const [clientX, setClientX] = useState<number>(0);
   const [clientY, setClientY] = useState<number>(0);
-  const isInteractive = useAppSelector((state) => state.site.interactiveItem);
-  const clientPos = useClientPosition();
+  const [wait, setWait] = useState<any>(null);
 
-  const mouseEvent = (e: MouseEvent) => {
+  const isInteractive = useAppSelector((state) => state.site.interactiveItem);
+
+  const saveMousePosition = (e: MouseEvent) => {
     setClientX(e.pageX);
     setClientY(e.pageY);
+    console.log("mouse position saved");
+  };
+
+  const throttle = (e: MouseEvent) => {
+    console.log("running");
+
+    if (wait) return;
+
+    setWait(
+      setTimeout(() => {
+        if (e) saveMousePosition(e);
+        setWait(false);
+      }, 1000)
+    );
   };
 
   useEffect(() => {
-    window.addEventListener("mousemove", mouseEvent);
+    window.addEventListener("mousemove", throttle);
 
     return () => {
-      window.removeEventListener("mousemove", mouseEvent);
+      window.removeEventListener("mousemove", throttle);
     };
-  }, []);
+  }, [throttle]);
 
   return (
     <Container
@@ -41,7 +61,9 @@ const Container = styled.div.attrs<{
   interactive: boolean;
 }>((props) => ({
   style: {
-    transform: `translate3d(${props.x}px, ${props.y}px, 1px) `,
+    // transform: `translate3d(${props.x}px, ${props.y}px, 1px) `,
+    top: props.y + "px",
+    left: props.x + "px",
   },
 }))<{ x: number; y: number; interactive: boolean; clientY: number }>`
   width: ${(props) => (props.interactive ? "3rem" : "5rem")};

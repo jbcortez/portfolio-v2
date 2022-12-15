@@ -3,37 +3,40 @@ import styled from "styled-components";
 import Button from "../../Components/Button";
 import { Container, Text, Column } from "../../styles/Components";
 
-const Hero: React.FC = () => {
-  return (
-    <ContainerStyles>
-      <InnerContainer>
-        <Column>
-          <Subheading>Hello, I'm Justin. I am a</Subheading>
-          <Heading>Frontend</Heading>
-          <Heading>Developer.</Heading>
-        </Column>
-        <RightColumn>
-          <TextContent variant={"primary"}>
-            I specialize in React and Typescript, but know my way around the
-            backend. I have a passion for web technologies and love a challenge.
-          </TextContent>
-          <FlexEnd>
-            <Button>
-              <a
-                target={"_blank"}
-                rel={"noreferrer"}
-                href={"/justin_cortez_resume.pdf"}
-              >
-                {"View Resume"}
-              </a>
-            </Button>
-          </FlexEnd>
-        </RightColumn>
-      </InnerContainer>
-    </ContainerStyles>
-  );
-};
-
+// eslint-disable-next-line react/display-name
+const Hero = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>(
+  (props, ref) => {
+    return (
+      <ContainerStyles ref={ref}>
+        <InnerContainer>
+          <Column>
+            <Subheading>Hello, I'm Justin. I am a</Subheading>
+            <Heading>Frontend</Heading>
+            <Heading>Developer.</Heading>
+          </Column>
+          <RightColumn>
+            <TextContent variant={"primary"}>
+              I specialize in React and Typescript, but know my way around the
+              backend. I have a passion for web technologies and love a
+              challenge.
+            </TextContent>
+            <FlexEnd>
+              <Button>
+                <a
+                  target={"_blank"}
+                  rel={"noreferrer"}
+                  href={"/justin_cortez_resume.pdf"}
+                >
+                  {"View Resume"}
+                </a>
+              </Button>
+            </FlexEnd>
+          </RightColumn>
+        </InnerContainer>
+      </ContainerStyles>
+    );
+  }
+);
 export default Hero;
 
 const ContainerStyles = styled(Container)`

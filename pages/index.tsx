@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { DarkTheme, LightTheme } from "../theme";
 import styled, { ThemeProvider } from "styled-components";
-import { useAppSelector } from "../redux/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
 import Header from "../Components/Header";
 import Nav from "../Components/Nav";
 import Hero from "../Sections/Home/Hero";
@@ -11,12 +11,19 @@ import About from "../Sections/Home/About";
 import Contact from "../Sections/Home/Contact";
 import Footer from "../Sections/Home/Footer";
 import CursorOrnament from "../Components/CursorOrnament";
-import React from "react";
+import React, { useRef } from "react";
 import { PageStyles } from "../styles/Components";
 
 export default function Home() {
   const theme = useAppSelector((state) => state.site.theme);
   const showNav = useAppSelector((state) => state.site.showNav);
+
+  const heroRef = useRef<HTMLDivElement>(null);
+  const skillsRef = useRef<HTMLElement>(null);
+  const projectsRef = useRef<HTMLElement>(null);
+  const aboutRef = useRef<HTMLElement>(null);
+  const contactRef = useRef<HTMLElement>(null);
+  const pageRefs = [heroRef, skillsRef, projectsRef, aboutRef, contactRef];
 
   return (
     <ThemeProvider theme={theme === "dark" ? DarkTheme : LightTheme}>
@@ -24,20 +31,20 @@ export default function Home() {
         <title>Justin Cortez - Home</title>
       </Head>
 
-      <PageStyles showNav={showNav}>
-        <Header />
+      <PageStyles>
+        <Header pageRefs={pageRefs} />
         <CursorOrnament />
-        {showNav && <Nav />}
+        {showNav && <Nav pageRefs={pageRefs} />}
 
         <Main>
-          <Hero />
-          <Skills />
-          <Projects />
-          <About />
+          <Hero ref={heroRef} />
+          <Skills ref={skillsRef} />
+          <Projects ref={projectsRef} />
+          <About ref={aboutRef} />
 
           <Row>
             <Container>
-              <Contact />
+              <Contact ref={contactRef} />
               <Footer />
             </Container>
           </Row>

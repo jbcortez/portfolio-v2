@@ -1,0 +1,1 @@
+export const NAV_ANIMATION_DURATION = 500;

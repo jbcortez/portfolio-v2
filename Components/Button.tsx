@@ -9,6 +9,7 @@ interface Props {
   children: React.ReactNode;
   style?: React.CSSProperties;
   variant?: "primary" | "secondary";
+  type?: "button" | "submit" | "reset";
 }
 
 const Button: React.FC<Props> = ({
@@ -17,6 +18,7 @@ const Button: React.FC<Props> = ({
   children,
   style,
   variant = "primary",
+  type,
 }) => {
   const [hover, setHover] = useState<"true" | "false">("false");
   const [width, setWidth] = useState<number>(0);
@@ -45,6 +47,7 @@ const Button: React.FC<Props> = ({
       case "primary":
         return (
           <PrimaryStyles
+            type={type}
             hover={hover}
             ref={btnRef}
             style={style}
@@ -104,6 +107,7 @@ const ButtonStyles = styled.button<{
   fill: "true" | "false";
   hover: "true" | "false";
   width: number;
+  type?: "button" | "submit" | "reset";
 }>`
   text-transform: uppercase;
   font-size: 2rem;
