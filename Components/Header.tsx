@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Hamburger from "./Hamburger";
 import { Container } from "../styles/Components";
@@ -8,6 +8,9 @@ import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
 import { handleNavMenu } from "../util/functions";
 import { NAV_ANIMATION_DURATION } from "../util/enums";
 import ThemeToggle from "./ThemeToggle";
+import { useRouter } from "next/router";
+import useIsHomepage from "../hooks/useIsHomepage";
+import Link from "next/link";
 
 interface Props {
   pageRefs?: React.RefObject<HTMLElement>[];
@@ -19,6 +22,7 @@ const Header: React.FC<Props> = ({ pageRefs = [] }) => {
   const showTitle = useMediaQuery("(min-width: 40rem");
   const showNav = useAppSelector((state) => state.site.showNav);
   const dispatch = useAppDispatch();
+  const isHomepage = useIsHomepage();
 
   const handleMouseOver = () => {
     handleIsInteractive(dispatch, true);
@@ -31,71 +35,127 @@ const Header: React.FC<Props> = ({ pageRefs = [] }) => {
   const handleHeroLink = () => {
     if (showNav) handleNavMenu(dispatch, showNav);
 
-    if (heroRef?.current)
+    if (heroRef && heroRef?.current)
       heroRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleProjectsLink = () => {
-    if (projectsRef.current)
+    if (projectsRef && projectsRef.current)
       projectsRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleAboutLink = () => {
-    if (aboutRef.current)
+    if (aboutRef && aboutRef.current)
       aboutRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleContactLink = () => {
-    if (contactRef.current)
+    if (contactRef && contactRef.current)
       contactRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const renderLinks = () => {
+    if (isHomepage) {
+      return (
+        <NavLinks>
+          <a onClick={handleProjectsLink}>
+            <NavLink
+              onMouseOver={handleMouseOver}
+              onMouseLeave={handleMouseLeave}
+            >
+              <LinkNumber>01.</LinkNumber> <span>Projects</span>
+            </NavLink>
+          </a>
+          <a onClick={handleAboutLink}>
+            <NavLink
+              onMouseOver={handleMouseOver}
+              onMouseLeave={handleMouseLeave}
+            >
+              <LinkNumber>02.</LinkNumber> <span>About Me</span>
+            </NavLink>
+          </a>
+
+          <a onClick={handleContactLink}>
+            <NavLink
+              onMouseOver={handleMouseOver}
+              onMouseLeave={handleMouseLeave}
+            >
+              <LinkNumber>03.</LinkNumber> <span>Contact</span>
+            </NavLink>
+          </a>
+          <NavLink
+            highlight={true}
+            onMouseOver={handleMouseOver}
+            onMouseLeave={handleMouseLeave}
+          >
+            <LinkNumber>04.</LinkNumber> <Highlight>Resume</Highlight>
+          </NavLink>
+          <ThemeToggle />
+        </NavLinks>
+      );
+    } else {
+      return (
+        <NavLinks>
+          <Link href={"/#projects"} onClick={handleProjectsLink}>
+            <NavLink
+              onMouseOver={handleMouseOver}
+              onMouseLeave={handleMouseLeave}
+            >
+              <LinkNumber>01.</LinkNumber> <span>Projects</span>
+            </NavLink>
+          </Link>
+          <Link href={"/#about"} onClick={handleAboutLink}>
+            <NavLink
+              onMouseOver={handleMouseOver}
+              onMouseLeave={handleMouseLeave}
+            >
+              <LinkNumber>02.</LinkNumber> <span>About Me</span>
+            </NavLink>
+          </Link>
+
+          <Link href={"/#contact"} onClick={handleContactLink}>
+            <NavLink
+              onMouseOver={handleMouseOver}
+              onMouseLeave={handleMouseLeave}
+            >
+              <LinkNumber>03.</LinkNumber> <span>Contact</span>
+            </NavLink>
+          </Link>
+          <NavLink
+            highlight={true}
+            onMouseOver={handleMouseOver}
+            onMouseLeave={handleMouseLeave}
+          >
+            <LinkNumber>04.</LinkNumber> <Highlight>Resume</Highlight>
+          </NavLink>
+          <ThemeToggle />
+        </NavLinks>
+      );
+    }
   };
 
   return (
     <HeaderStyles>
       <ContainerStyles>
         <Row>
-          <a style={{ cursor: "pointer" }} onClick={handleHeroLink}>
-            <Logo>Justin Cortez</Logo>
-          </a>
+          {isHomepage ? (
+            <a style={{ cursor: "pointer" }} onClick={handleHeroLink}>
+              <Logo>Justin Cortez</Logo>
+            </a>
+          ) : (
+            <Link
+              href={"/"}
+              style={{ cursor: "pointer" }}
+              onClick={handleHeroLink}
+            >
+              <Logo>Justin Cortez</Logo>
+            </Link>
+          )}
           {showTitle && <SecondaryLogo>Frontend Developer</SecondaryLogo>}
         </Row>
 
         {desktop ? (
-          <NavLinks>
-            <a onClick={handleProjectsLink}>
-              <NavLink
-                onMouseOver={handleMouseOver}
-                onMouseLeave={handleMouseLeave}
-              >
-                <LinkNumber>01.</LinkNumber> <span>Projects</span>
-              </NavLink>
-            </a>
-            <a onClick={handleAboutLink}>
-              <NavLink
-                onMouseOver={handleMouseOver}
-                onMouseLeave={handleMouseLeave}
-              >
-                <LinkNumber>02.</LinkNumber> <span>About Me</span>
-              </NavLink>
-            </a>
-
-            <a onClick={handleContactLink}>
-              <NavLink
-                onMouseOver={handleMouseOver}
-                onMouseLeave={handleMouseLeave}
-              >
-                <LinkNumber>03.</LinkNumber> <span>Contact</span>
-              </NavLink>
-            </a>
-            <NavLink
-              highlight={true}
-              onMouseOver={handleMouseOver}
-              onMouseLeave={handleMouseLeave}
-            >
-              <LinkNumber>04.</LinkNumber> <Highlight>Resume</Highlight>
-            </NavLink>
-            <ThemeToggle />
-          </NavLinks>
+          renderLinks()
         ) : (
           <Row>
             <ThemeToggle />

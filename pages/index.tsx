@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { DarkTheme, LightTheme } from "../theme";
 import styled, { ThemeProvider } from "styled-components";
-import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
+import { useAppSelector } from "../redux/reduxHooks";
 import Header from "../Components/Header";
 import Nav from "../Components/Nav";
 import Hero from "../Sections/Home/Hero";
@@ -10,7 +10,6 @@ import Projects from "../Sections/Home/Projects";
 import About from "../Sections/Home/About";
 import Contact from "../Sections/Home/Contact";
 import Footer from "../Sections/Home/Footer";
-import CursorOrnament from "../Components/CursorOrnament";
 import React, { useRef } from "react";
 import { PageStyles } from "../styles/Components";
 
@@ -33,7 +32,7 @@ export default function Home() {
 
       <PageStyles>
         <Header pageRefs={pageRefs} />
-        <CursorOrnament />
+
         {showNav && <Nav pageRefs={pageRefs} />}
 
         <Main>

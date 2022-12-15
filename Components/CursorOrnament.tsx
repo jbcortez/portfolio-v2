@@ -1,47 +1,27 @@
-import React, {
-  MouseEventHandler,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+// Currently disabled due to lag issues in firefox. Possible solution is throttling mousemove event.
+
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAppSelector } from "../redux/reduxHooks";
-import { debounce } from "lodash";
 
 const CursorOrnament: React.FC = () => {
   const [clientX, setClientX] = useState<number>(0);
   const [clientY, setClientY] = useState<number>(0);
-  const [wait, setWait] = useState<any>(null);
 
   const isInteractive = useAppSelector((state) => state.site.interactiveItem);
 
-  const saveMousePosition = (e: MouseEvent) => {
+  const handleMouseMove = useCallback((e: MouseEvent) => {
     setClientX(e.pageX);
     setClientY(e.pageY);
-    console.log("mouse position saved");
-  };
-
-  const throttle = (e: MouseEvent) => {
-    console.log("running");
-
-    if (wait) return;
-
-    setWait(
-      setTimeout(() => {
-        if (e) saveMousePosition(e);
-        setWait(false);
-      }, 1000)
-    );
-  };
+  }, []);
 
   useEffect(() => {
-    window.addEventListener("mousemove", throttle);
+    window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      window.removeEventListener("mousemove", throttle);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [throttle]);
+  }, [handleMouseMove]);
 
   return (
     <Container
@@ -62,8 +42,8 @@ const Container = styled.div.attrs<{
 }>((props) => ({
   style: {
     // transform: `translate3d(${props.x}px, ${props.y}px, 1px) `,
-    top: props.y + "px",
-    left: props.x + "px",
+    top: props.y - 25 + "px",
+    left: props.x - 25 + "px",
   },
 }))<{ x: number; y: number; interactive: boolean; clientY: number }>`
   width: ${(props) => (props.interactive ? "3rem" : "5rem")};
@@ -74,11 +54,9 @@ const Container = styled.div.attrs<{
   display: ${(props) =>
     props.x && props.y && props.clientY ? "block" : "none"};
   position: absolute;
-  top: ${(props) => (props.interactive ? "-1.5rem" : "-2.5rem")};
-  left: ${(props) => (props.interactive ? "-1.5rem" : "-2.5rem")};
   filter: invert(1);
   mix-blend-mode: difference;
-  transition: all 0.4s ease-out;
+  transition: opacity 500ms ease;
   z-index: 100000;
   pointer-events: none;
 `;

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import {
   Container,
@@ -26,23 +26,6 @@ const Skills = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement>>(
       setHover(false);
     };
 
-    useEffect(() => {
-      if (rendered) {
-        const div = sectionRef.current;
-        if (div) setWidth(div.getBoundingClientRect().width);
-      }
-    }, [rendered]);
-
-    useEffect(() => {
-      if (hasRendered.current) {
-        setRendered(true);
-      }
-
-      return () => {
-        hasRendered.current = true;
-      };
-    }, []);
-
     return (
       <Section id={"skills"} ref={ref}>
         <SectionTitle variant={"primary"}>Skills</SectionTitle>
@@ -50,7 +33,13 @@ const Skills = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement>>(
           {matches ? (
             <>
               <InnerContainer>
-                <SpaceBetween ref={sectionRef}>
+                <SpaceBetween
+                  ref={(node) => {
+                    if (node) {
+                      setWidth(node.getBoundingClientRect().width);
+                    }
+                  }}
+                >
                   <Span
                     onMouseOver={handleMouseOver}
                     onMouseLeave={handleMouseLeave}

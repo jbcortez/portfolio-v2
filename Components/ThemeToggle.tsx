@@ -30,7 +30,7 @@ const ThemeToggle = () => {
 export default ThemeToggle;
 
 const Button = styled.button`
-  font-size: 2.8rem;
+  font-size: 2.4rem;
   color: ${(props) => props.theme.colors.primary};
   cursor: pointer;
   background: none;

@@ -9,6 +9,7 @@ import { NAV_ANIMATION_DURATION } from "../util/enums";
 import { ThemeType } from "../types";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import useIsHomepage from "../hooks/useIsHomepage";
 
 interface Props {
   pageRefs?: React.RefObject<HTMLElement>[];
@@ -16,20 +17,12 @@ interface Props {
 
 const Nav: React.FC<Props> = ({ pageRefs = [] }) => {
   const dispatch = useAppDispatch();
-  const { pathname } = useRouter();
+
   const showNav = useAppSelector((state) => state.site.showNav);
   const exitAnimation = useAppSelector((state) => state.site.navExitAnimation);
   const themeMode = useAppSelector((state) => state.site.theme);
   const [heroRef, skillsRef, projectsRef, aboutRef, contactRef] = pageRefs;
-  const [isHomepage, setIsHomepage] = useState(true);
-
-  useEffect(() => {
-    if (pathname.match(/project-details/gi)) {
-      setIsHomepage(false);
-    } else {
-      setIsHomepage(true);
-    }
-  }, [pathname]);
+  const isHomepage = useIsHomepage();
 
   const handleHeroLink = () => {
     handleNavMenu(dispatch, showNav);

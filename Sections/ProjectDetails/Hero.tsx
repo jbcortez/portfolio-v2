@@ -16,7 +16,7 @@ const Hero = () => {
           <ImageContainer>
             <FramedImage
               src={
-                "https://oceanapps.nyc3.cdn.digitaloceanspaces.com/screenshots/design-studio-screenshot-optimized.png"
+                "https://oceanapps.nyc3.cdn.digitaloceanspaces.com/screenshots/fall-sale-2.png"
               }
               alt={"Content Scheduler Screenshot"}
             />

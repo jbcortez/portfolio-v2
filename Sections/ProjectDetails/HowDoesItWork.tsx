@@ -16,7 +16,7 @@ const HowDoesItWork = () => {
               <ImageContainer>
                 <FramedImage
                   src={
-                    "https://oceanapps.nyc3.cdn.digitaloceanspaces.com/screenshots/design-studio-screenshot-optimized.png"
+                    "https://oceanapps.nyc3.cdn.digitaloceanspaces.com/screenshots/button-props.png"
                   }
                   alt={"Content Scheduler Screenshot"}
                 />
@@ -48,7 +48,7 @@ const HowDoesItWork = () => {
             <ImageContainer>
               <FramedImage
                 src={
-                  "https://oceanapps.nyc3.cdn.digitaloceanspaces.com/screenshots/design-studio-screenshot-optimized.png"
+                  "https://oceanapps.nyc3.cdn.digitaloceanspaces.com/screenshots/calendar.png"
                 }
                 alt={"Content Scheduler Screenshot"}
               />
