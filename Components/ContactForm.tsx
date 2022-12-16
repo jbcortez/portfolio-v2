@@ -76,7 +76,7 @@ const ContactForm = () => {
         />
       </FormControl>
 
-      <Button style={{ width: "10.6rem" }} type={"submit"}>
+      <Button style={{ fontWeight: "400" }} type={"submit"}>
         Submit
       </Button>
       {showModal && (
