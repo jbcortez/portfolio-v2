@@ -88,7 +88,13 @@ const Header: React.FC<Props> = ({ pageRefs = [] }) => {
             onMouseOver={handleMouseOver}
             onMouseLeave={handleMouseLeave}
           >
-            <LinkNumber>04.</LinkNumber> <Highlight>Resume</Highlight>
+            <a
+              target={"_blank"}
+              rel={"noreferrer"}
+              href={"/justin_cortez_resume.pdf"}
+            >
+              <LinkNumber>04.</LinkNumber> <Highlight>Resume</Highlight>
+            </a>
           </NavLink>
           <ThemeToggle />
         </NavLinks>
@@ -121,12 +127,19 @@ const Header: React.FC<Props> = ({ pageRefs = [] }) => {
               <LinkNumber>03.</LinkNumber> <span>Contact</span>
             </NavLink>
           </Link>
+
           <NavLink
             highlight={true}
             onMouseOver={handleMouseOver}
             onMouseLeave={handleMouseLeave}
           >
-            <LinkNumber>04.</LinkNumber> <Highlight>Resume</Highlight>
+            <a
+              target={"_blank"}
+              rel={"noreferrer"}
+              href={"/justin_cortez_resume.pdf"}
+            >
+              <LinkNumber>04.</LinkNumber> <Highlight>Resume</Highlight>
+            </a>
           </NavLink>
           <ThemeToggle />
         </NavLinks>
