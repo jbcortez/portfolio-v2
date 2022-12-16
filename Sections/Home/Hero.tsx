@@ -51,12 +51,13 @@ const InnerContainer = styled.div`
   height: 100vh;
   max-height: 100rem;
   justify-content: center;
-  padding-top: 6rem;
+  padding-top: 2vh;
   margin: 0 auto;
   @media screen and (min-width: 65em) {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding-top: 0;
   }
 `;
 

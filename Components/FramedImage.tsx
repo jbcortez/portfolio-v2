@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 interface Props {
@@ -16,7 +10,7 @@ const FramedImage: React.FC<Props> = ({ src, alt }) => {
   const [height, setHeight] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const node = ref.current;
 
     if (node) {
