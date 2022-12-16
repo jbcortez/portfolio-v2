@@ -51,6 +51,7 @@ const InnerContainer = styled.div`
   height: 100vh;
   max-height: 100rem;
   justify-content: center;
+  padding-top: 6rem;
   margin: 0 auto;
   @media screen and (min-width: 65em) {
     flex-direction: row;
@@ -61,8 +62,7 @@ const InnerContainer = styled.div`
 
 const Heading = styled.h1`
   font-family: "Tusker Grotesk 2600 Semibold", sans-serif;
-  font-size: clamp(15rem, 40vw, 20rem);
-
+  font-size: clamp(14rem, 35vw, 20rem);
   line-height: 1;
   text-transform: uppercase;
 `;
