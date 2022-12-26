@@ -35,7 +35,7 @@ const HowDoesItWork = () => {
               Once users have designed their content, they can easily schedule
               it to display on their site at their desired time using the
               scheduling feature. With the ability to schedule as many designs
-              as they like at 30-minute intervals, this tool provides
+              as they like at 30-minute intervals, Content Scheduler provides
               flexibility and convenience for users to keep their website fresh
               and up-to-date.
             </ProjectDescriptionStyles>

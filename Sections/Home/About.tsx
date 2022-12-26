@@ -14,14 +14,14 @@ const About = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement>>(
           </ImageContainer>
 
           <Column>
-            <Text variant={"secondary"}>
-              Hello! I&apos;m justin, a frontend developer with a penchant for
+            <Text variant={"secondary"} style={{ fontSize: "2rem" }}>
+              Hello! I&apos;m Justin, a frontend developer with a penchant for
               all things web. I began my journey in 2020, when I broke free from
               the shackles of IT and embarked on a new adventure in web
               development. It&apos;s been a wild ride, but also an incredibly
               rewarding one.
             </Text>
-            <Text variant={"secondary"}>
+            <Text variant={"secondary"} style={{ fontSize: "2rem" }}>
               In my spare time, I run a little business called Ocean Apps, where
               I developed a SaaS application called Content Scheduler. It
               features a dynamic widget that allows Wix users to design and
@@ -29,7 +29,7 @@ const About = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement>>(
               challenging and fulfilling project, and I learned a ton along the
               way.
             </Text>
-            <Text variant={"secondary"}>
+            <Text variant={"secondary"} style={{ fontSize: "2rem" }}>
               Now, I&apos;m looking to join a team and take my skills to the
               next level. I&apos;m interested in opportunities that will
               challenge me and allow me to grow as a professional. If
