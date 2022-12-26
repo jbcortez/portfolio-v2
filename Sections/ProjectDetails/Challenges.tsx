@@ -20,7 +20,7 @@ const Challenges = () => {
           <ProjectDescriptionStyles variant={"secondary"}>
             One of the key challenges I faced during this project was working
             with complex data structures. As the state of the app grew more
-            intricate with the addition of new features. it became increasingly
+            intricate with the addition of new features, it became increasingly
             difficult to track data flow between the frontend and backend. In
             order to address this issue, I made the decision to refactor the app
             using TypeScript. This proved to be an invaluable decision as it

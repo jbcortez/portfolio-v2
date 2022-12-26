@@ -34,8 +34,7 @@ const About = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement>>(
               next level. I&apos;m interested in opportunities that will
               challenge me and allow me to grow as a professional. If
               you&apos;ve got an opening and think I might be a good fit,
-              don&apos;t hesitate to get in touch! Let&apos;s make some magic
-              happen.
+              don&apos;t hesitate to get in touch!
             </Text>
           </Column>
         </InnerContainer>
