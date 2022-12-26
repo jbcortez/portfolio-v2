@@ -17,9 +17,7 @@ const Hero = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>(
           <RightColumn>
             <TextContent variant={"primary"}>
               I am a frontend developer with a passion for creating intuitive
-              and visually appealing user experiences. Constantly striving to
-              improve, I am excited to bring my enthusiasm and dedication to
-              your organization as a valuable asset to your team.
+              and visually appealing user experiences.
             </TextContent>
             <FlexEnd>
               <Button>
