@@ -24,10 +24,11 @@ const Hero = () => {
 
           <ProjectSectionTitle>Summary</ProjectSectionTitle>
           <ProjectDescriptionStyles variant={"secondary"}>
-            An application built for Wix that enables users to design and
-            schedule content updates on their website within a dynamic widget.
-            We built it with small businesses in mind, allowing them more
-            freedom regarding time spent updating their website.
+            Our application, built specifically for Wix, gives small business
+            owners the freedom to easily design and schedule content updates on
+            their website through a dynamic widget. We designed this tool with
+            the busy schedules of small business owners in mind, streamlining
+            their website update process.
           </ProjectDescriptionStyles>
         </Column>
       </InnerContainer>

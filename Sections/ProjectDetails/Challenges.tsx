@@ -10,27 +10,32 @@ const Challenges = () => {
         <SectionTitle>Some Challenges I Faced</SectionTitle>
         <Column>
           <ProjectDescriptionStyles variant={"secondary"}>
-            Throughout this project I was continually pushed outside of my
-            comfort zone. There were many first-times for me, and this pushed me
-            to grow as a developer. I learned more from this project than I ever
-            could've imagined.
+            This project presented numerous opportunities for growth and
+            learning, as I was continuously pushed to step outside of my comfort
+            zone and tackle new tasks. As a result, I was able to significantly
+            expand my skill set as a developer and gain valuable experience. I
+            am grateful for the chance to challenge myself and exceed my own
+            expectations.
           </ProjectDescriptionStyles>
           <ProjectDescriptionStyles variant={"secondary"}>
-            Halfway through the project, I began to learn TypeScript. The state
-            in the app was growing more complex as I added more features. It
-            became difficult to track which data was being passed to the backend
-            and where it was being passed. I decided it would be beneficial to
-            refactor the app using TypeScript, and it was worth every minute. I
-            can't see myself ever going back to Vanilla Javascript.
+            One of the key challenges I faced during this project was working
+            with complex data structures. As the state of the app grew more
+            intricate with the addition of new features. it became increasingly
+            difficult to track data flow between the frontend and backend. In
+            order to address this issue, I made the decision to refactor the app
+            using TypeScript. This proved to be an invaluable decision as it
+            greatly improved the clarity and organization of the codebase. I now
+            prefer using TypeScript over Vanilla JavaScript and can&apos;t see
+            myself going back.
           </ProjectDescriptionStyles>
           <ProjectDescriptionStyles variant={"secondary"}>
-            After a year of development (as I said, I had to learn a lot along
-            the way), having officially deployed the app into production and
-            being listed in the Wix App Market, I am proud of what I've built.
-            It's too soon to tell if it will be a success, but that's all part
-            of the journey. I'm excited to continue building the app with
-            updates and can't wait to see what the future holds for my career as
-            a developer.
+            This project has been a major milestone in my development journey. I
+            am proud of what I built and grateful for the opportunity to learn
+            and grow through the process. The challenges I faced only served to
+            fuel my passion for problem-solving and drive me to continue
+            improving my skills. As I move forward in my career, I am excited to
+            bring my enthusiasm, dedication, and expertise to future projects
+            and continue to grow as a developer.
           </ProjectDescriptionStyles>
         </Column>
       </InnerContainer>

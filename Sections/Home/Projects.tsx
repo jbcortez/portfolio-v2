@@ -8,7 +8,7 @@ const projectList: ProjectType[] = [
   {
     title: "Content Scheduler",
     description:
-      "An application that allows users to design and schedule content changes on their website. Available on the Wix App Market.",
+      "Content scheduler is a SaaS application that empowers users to easily design and schedule updates for their website. With a user-friendly interface and intuitive design, it is a great choice for small businesses looking to streamline their website management process. Content Scheduler is available on the Wix App Market for easy access and integration with Wix websites.",
     variant: "primary",
     screenshot:
       "https://oceanapps.nyc3.cdn.digitaloceanspaces.com/screenshots/design-studio-screenshot-optimized.png",
@@ -55,6 +55,7 @@ const projectList: ProjectType[] = [
   },
 ];
 
+// eslint-disable-next-line react/display-name
 const Projects = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement>>(
   (props, ref) => {
     return (

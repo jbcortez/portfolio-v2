@@ -24,23 +24,20 @@ const HowDoesItWork = () => {
             )}
             <SectionTitle>How does it work?</SectionTitle>
             <ProjectDescriptionStyles variant={"secondary"}>
-              Using the Content Scheduler Design Studio, users have the creative
-              freedom to design their content however they like. It features
-              almost everything you would expect in a wysiwyg editor: drag and
-              drop, alignment snapping, custom fonts, templates, images,
-              backgrounds, custom buttons, and the freedom to customize
-              everything. I plan to add even more features in the near future.
+              With the Content Scheduler Design Studio, users can unleash their
+              creativity and design their content exactly how they envision it.
+              Boasting a range of features such as drag and drop, alignment
+              snapping, custom fonts, templates, images, backgrounds, and custom
+              buttons, this tool provides a comprehensive and customizable
+              experience.
             </ProjectDescriptionStyles>
             <ProjectDescriptionStyles variant={"secondary"}>
-              After designing their content, users can jump over to the Schedule
-              view and schedule their newly designed content to show on their
-              site at any time of their choosing within 30 minute intervals.
-              They can schedule as many designs as they like.
-            </ProjectDescriptionStyles>
-            <ProjectDescriptionStyles variant={"secondary"}>
-              On the backend, the server runs a cron job every 30 minutes,
-              checking for content that should be set to active. Once set to
-              active, it will display on the corresponding user’s website.
+              Once users have designed their content, they can easily schedule
+              it to display on their site at their desired time using the
+              scheduling feature. With the ability to schedule as many designs
+              ad they like at 30-minute intervals, this tool provides
+              flexibility and convenience for users to keep their website fresh
+              and up-to-date.
             </ProjectDescriptionStyles>
           </Column>
 

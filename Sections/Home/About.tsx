@@ -15,24 +15,27 @@ const About = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement>>(
 
           <Column>
             <Text variant={"secondary"}>
-              Hello, I’m Justin, a frontend developer from Santa Cruz,
-              California. I started my journey into web development in 2020 when
-              I was released into the wild from my IT imprisonment. I kid, it
-              was a fun experience, but not nearly as challenging and rewarding
-              as web development.
+              Hello! I&apos;m justin, a frontend developer with a penchant for
+              all things web. I began my journey in 2020, when I broke free from
+              the shackles of IT and embarked on a new adventure in web
+              development. It&apos;s been a wild ride, but also an incredibly
+              rewarding one.
             </Text>
             <Text variant={"secondary"}>
-              I spent the past year developing a SaaS application for my
-              business, Ocean Apps, called Content Scheduler. It enables Wix
-              users to design and schedule content changes on their websites in
-              a dynamic widget. It was a fulfilling journey, teaching me more
-              than I could’ve imagined.
+              In my spare time, I run a little business called Ocean Apps, where
+              I developed a SaaS application called Content Scheduler. It
+              features a dynamic widget that allows Wix users to design and
+              schedule content updates for their websites with ease. It was a
+              challenging and fulfilling project, and I learned a ton along the
+              way.
             </Text>
             <Text variant={"secondary"}>
-              On to my next journey, I’m looking to take the experience I’ve
-              gained and join a team. I’m interested in challenging
-              opportunities that will allow me to grow professionally. If you
-              have an opportunity and think I may be a great fit, let me know!
+              Now, I&apos;m looking to join a team and take my skills to the
+              next level. I&apos;m interested in opportunities that will
+              challenge me and allow me to grow as a professional. If
+              you&apos;ve got an opening and think I might be a good fit,
+              don&apos;t hesitate to get in touch! Let&apos;s make some magic
+              happen.
             </Text>
           </Column>
         </InnerContainer>
