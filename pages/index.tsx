@@ -34,6 +34,12 @@ export default function Home() {
             "https://oceanapps.nyc3.cdn.digitaloceanspaces.com/justin-cortez.png"
           }
         />
+        <meta
+          name={"description"}
+          content={
+            "Justin Cortez is a Frontend Developer with a passion for building intuitive and visually appealing user experiences."
+          }
+        />
       </Head>
 
       <PageStyles>
