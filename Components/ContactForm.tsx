@@ -19,7 +19,6 @@ const ContactForm = () => {
     register,
     handleSubmit,
     reset,
-    formState,
     formState: { isSubmitSuccessful },
   } = useForm();
 
@@ -66,7 +65,7 @@ const ContactForm = () => {
         />
       </FormControl>
       <FormControl>
-        <Label htmlFor={"email"}>Message*</Label>
+        <Label htmlFor={"message"}>Message*</Label>
         <TextArea
           mode={themeMode}
           required={true}
