@@ -61,7 +61,7 @@ export default function Home() {
           </Row>
 
           <Copyright>
-            Copyright © 2022 Justin Cortez. All rights reserved.
+            Copyright © 2023 Justin Cortez. All rights reserved.
           </Copyright>
         </Main>
       </PageStyles>
