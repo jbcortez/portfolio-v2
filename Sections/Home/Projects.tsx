@@ -19,7 +19,7 @@ const projectList: ProjectType[] = [
     tech: [
       "React",
       "TypeScript",
-      "Sass",
+      "Styled-Components",
       "Node",
       "Express",
       "MongoDB",
