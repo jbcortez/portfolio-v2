@@ -48,4 +48,5 @@ const Copyright = styled.span`
   font-size: 1.3rem;
   background: ${(props) => props.theme.colors.secondary};
   padding-bottom: ${(props) => props.theme.spacing[3]};
+  color: ${(props) => props.theme.colors.primary};
 `;
