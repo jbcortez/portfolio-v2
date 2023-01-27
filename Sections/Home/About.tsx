@@ -1,35 +1,36 @@
-import React from "react";
-import styled from "styled-components";
-import { Container, SectionTitle, Text } from "../../styles/Components";
-import FramedImage from "../../Components/FramedImage";
+import React from 'react';
+import styled from 'styled-components';
+import { Container, SectionTitle, Text } from '../../styles/Components';
+import FramedImage from '../../Components/FramedImage';
 
 const About = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement>>(
   ({}, ref) => {
     return (
-      <Section id={"about"} ref={ref}>
-        <SectionTitle variant={"secondary"}>About Me</SectionTitle>
+      <Section id={'about'} ref={ref}>
+        <SectionTitle variant={'secondary'}>About Me</SectionTitle>
         <InnerContainer>
           <ImageContainer>
-            <FramedImage src={"/images/me.png"} alt={"alt"} />
+            <FramedImage src={'/images/me.png'} alt={'alt'} />
           </ImageContainer>
 
           <Column>
-            <Text variant={"secondary"}>
-              Hello! I&apos;m Justin, a frontend developer with a penchant for
+            <Text variant={'secondary'}>
+              Hello! I&apos;m Justin, a Frontend Developer with a penchant for
               all things web. I began my journey in 2020, when I broke free from
               the shackles of IT and embarked on a new adventure in web
               development. It&apos;s been a wild ride, but also an incredibly
               rewarding one.
             </Text>
-            <Text variant={"secondary"}>
-              In my spare time, I run a little business called Ocean Apps, where
-              I developed a SaaS application called Content Scheduler. It
-              features a dynamic widget that allows Wix users to design and
-              schedule content updates for their websites with ease. It was a
-              challenging and fulfilling project, and I learned a ton along the
-              way.
+            <Text variant={'secondary'}>
+              I have a background developing SaaS applications. I designed and
+              developed an application for a small company called Ocean Apps.
+              It's geared towards small businesses to help them streamline their
+              website update process. It's built for the Wix platform and gives
+              Wix users the ability to design and schedule content changes on
+              their website. It's currently listed in the Wix App Market and has
+              been showing continuous growth.
             </Text>
-            <Text variant={"secondary"}>
+            <Text variant={'secondary'}>
               Now, I&apos;m looking to join a team and take my skills to the
               next level. I&apos;m interested in opportunities that will
               challenge me and allow me to grow as a professional. If
