@@ -1,14 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import { Container, SectionTitle } from "../../styles/Components";
-import ContactForm from "../../Components/ContactForm";
+import React from 'react';
+import styled from 'styled-components';
+import { Container, SectionTitle } from '../../styles/Components';
+import ContactForm from '../../Components/ContactForm';
 
 const Contact = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement>>(
   (props, ref) => {
     return (
-      <Section id={"contact"} ref={ref}>
+      <Section id={'contact'} ref={ref}>
         <InnerContainer>
-          <SectionTitle style={{ textAlign: "left" }} variant={"primary"}>
+          <SectionTitle style={{ textAlign: 'left' }} variant={'primary'}>
             Get in touch
           </SectionTitle>
           <ContactForm />
