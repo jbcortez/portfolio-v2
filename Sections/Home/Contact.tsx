@@ -1,10 +1,11 @@
+/* eslint-disable react/display-name */
 import React from 'react';
 import styled from 'styled-components';
 import { Container, SectionTitle } from '../../styles/Components';
 import ContactForm from '../../Components/ContactForm';
 
 const Contact = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement>>(
-  (props, ref) => {
+  (_props, ref) => {
     return (
       <Section id={'contact'} ref={ref}>
         <InnerContainer>
