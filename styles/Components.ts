@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   padding-left: 2rem;
@@ -23,18 +23,18 @@ export const ProjectSectionTitle = styled.h3`
 `;
 
 export const SectionTitle = styled.h2<{
-  variant: "primary" | "secondary";
-  align?: "center" | "left" | "right";
+  variant: 'primary' | 'secondary';
+  align?: 'center' | 'left' | 'right';
 }>`
-  font-family: "Tusker Grotesk 3600 Semibold", sans-serif;
+  font-family: 'Tusker Grotesk 3600 Semibold', sans-serif;
   font-size: 4rem;
   color: ${(props) =>
-    props.variant === "primary"
+    props.variant === 'primary'
       ? props.theme.colors.primary
       : props.theme.colors.secondary};
   text-transform: uppercase;
   width: 100%;
-  text-align: ${(props) => (props.align ? props.align : "center")};
+  text-align: ${(props) => (props.align ? props.align : 'center')};
   margin-bottom: ${(props) => props.theme.spacing[3]};
 
   @media screen and (min-width: 65em) {
@@ -44,12 +44,12 @@ export const SectionTitle = styled.h2<{
   }
 `;
 
-export const ProjectTitle = styled.h3<{ variant: "primary" | "secondary" }>`
+export const ProjectTitle = styled.h3<{ variant: 'primary' | 'secondary' }>`
   font-family: Migra, sans-serif;
   font-weight: bold;
   font-size: 1.8rem;
   color: ${(props) =>
-    props.variant === "primary"
+    props.variant === 'primary'
       ? props.theme.colors.secondary
       : props.theme.colors.primary};
   margin-bottom: ${(props) => props.theme.spacing[2]};
@@ -67,39 +67,39 @@ export const SecondaryBackground = styled.div`
 `;
 
 export const ProjectDescription = styled.p<{
-  variant: "primary" | "secondary";
+  variant: 'primary' | 'secondary';
 }>`
   font-size: 1.6rem;
   color: ${(props) =>
-    props.variant === "primary"
+    props.variant === 'primary'
       ? props.theme.colors.secondary
       : props.theme.colors.primary};
-  font-family: "PP Neue Montreal", sans-serif;
+  font-family: 'PP Neue Montreal', sans-serif;
   font-weight: 400;
   line-height: 133%;
   margin-bottom: ${(props) => props.theme.spacing[4]};
 `;
 
-export const Text = styled.p<{ variant: "primary" | "secondary" }>`
+export const Text = styled.p<{ variant: 'primary' | 'secondary' }>`
   margin-top: ${(props) => props.theme.spacing[5]};
   font-size: 1.6rem;
   max-width: calc(100vw - 4rem);
   color: ${(props) =>
-    props.variant === "primary"
+    props.variant === 'primary'
       ? props.theme.colors.primary
       : props.theme.colors.secondary};
   line-height: 1.3;
 `;
 
 export const SecondaryLink = styled.a<{
-  variant?: "primary" | "secondary";
+  variant?: 'primary' | 'secondary';
   reverse?: boolean;
 }>`
-  font-family: "Tusker Grotesk 5500 Medium", sans-serif;
+  font-family: 'Tusker Grotesk 5500 Medium', sans-serif;
   font-size: 1.6rem;
   text-transform: uppercase;
   display: flex;
-  flex-direction: ${(props) => props.reverse && "row-reverse"};
+  flex-direction: ${(props) => props.reverse && 'row-reverse'};
   align-items: center;
   cursor: pointer;
   position: relative;
@@ -107,12 +107,12 @@ export const SecondaryLink = styled.a<{
 
   &::after {
     position: absolute;
-    content: "";
+    content: '';
     bottom: -2px;
     left: 5px;
     height: 1px;
     background: ${(props) =>
-      props.variant === "primary"
+      props.variant === 'primary'
         ? props.theme.colors.primary
         : props.theme.colors.secondary};
     width: 0;
@@ -135,16 +135,16 @@ export const PageStyles = styled.div`
   position: relative;
   transition: all 0.2s ease;
 
-  &::after {
+  /* &::after {
     position: fixed;
-    content: "";
+    content: '';
     top: -50%;
     left: -50%;
     right: -50%;
     bottom: -50%;
     width: 200%;
     height: 200vh;
-    background: transparent url("/images/noise2.jpg") repeat 0 0;
+    background: transparent url('/images/noise2.jpg') repeat 0 0;
     animation: bg-animation 0.2s infinite;
     opacity: 0.07;
     z-index: 1000;
@@ -185,7 +185,7 @@ export const PageStyles = styled.div`
         transform: translate(5%, 0);
       }
     }
-  }
+  } */
 `;
 
 export const Cover = styled.div`
