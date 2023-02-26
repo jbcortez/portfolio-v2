@@ -1,11 +1,11 @@
-import React from "react";
-import FramedImage from "../../Components/FramedImage";
-import styled from "styled-components";
-import { Container } from "../../styles/Components";
+import React from 'react';
+import FramedImage from '../../Components/FramedImage';
+import styled from 'styled-components';
+import { Container } from '../../styles/Components';
 import {
   ProjectDescription,
   ProjectSectionTitle,
-} from "../../styles/Components";
+} from '../../styles/Components';
 
 const Hero = () => {
   return (
@@ -16,14 +16,14 @@ const Hero = () => {
           <ImageContainer>
             <FramedImage
               src={
-                "https://oceanapps.nyc3.cdn.digitaloceanspaces.com/screenshots/fall-sale-2.png"
+                'https://oceanapps.nyc3.cdn.digitaloceanspaces.com/screenshots/fall-sale-2.png'
               }
-              alt={"Content Scheduler Screenshot"}
+              alt={'Content Scheduler Screenshot'}
             />
           </ImageContainer>
 
           <ProjectSectionTitle>Summary</ProjectSectionTitle>
-          <ProjectDescriptionStyles variant={"secondary"}>
+          <ProjectDescriptionStyles variant={'secondary'}>
             Our application, built specifically for Wix, gives small business
             owners the freedom to easily design and schedule content updates on
             their website through a dynamic widget. We designed this tool with
@@ -69,12 +69,12 @@ const ProjectDescriptionStyles = styled(ProjectDescription)`
   max-width: 60rem;
 
   @media screen and (min-width: 65em) {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 `;
 
 const Title = styled.h2`
-  font-family: "Tusker Grotesk 3600 Semibold", sans-serif;
+  font-family: 'Tusker Grotesk 3600 Semibold', sans-serif;
   font-size: 4rem;
   color: ${(props) => props.theme.colors.primary};
   text-transform: uppercase;

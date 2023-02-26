@@ -1,12 +1,12 @@
-import React from "react";
-import FramedImage from "../../Components/FramedImage";
-import styled from "styled-components";
-import { Container } from "../../styles/Components";
-import { ProjectDescription } from "../../styles/Components";
-import { useMediaQuery } from "@mui/material";
+import React from 'react';
+import FramedImage from '../../Components/FramedImage';
+import styled from 'styled-components';
+import { Container } from '../../styles/Components';
+import { ProjectDescription } from '../../styles/Components';
+import { useMediaQuery } from '@mui/material';
 
 const HowDoesItWork = () => {
-  const desktop = useMediaQuery("(min-width: 65em)");
+  const desktop = useMediaQuery('(min-width: 65em)');
   return (
     <Section>
       <InnerContainer>
@@ -16,14 +16,14 @@ const HowDoesItWork = () => {
               <ImageContainer>
                 <FramedImage
                   src={
-                    "https://oceanapps.nyc3.cdn.digitaloceanspaces.com/screenshots/button-props.png"
+                    'https://oceanapps.nyc3.cdn.digitaloceanspaces.com/screenshots/button-props.png'
                   }
-                  alt={"Content Scheduler Screenshot"}
+                  alt={'Content Scheduler Screenshot'}
                 />
               </ImageContainer>
             )}
             <SectionTitle>How does it work?</SectionTitle>
-            <ProjectDescriptionStyles variant={"secondary"}>
+            <ProjectDescriptionStyles variant={'secondary'}>
               With the Content Scheduler Design Studio, users can unleash their
               creativity and design their content exactly how they envision it.
               Boasting a range of features such as drag and drop, alignment
@@ -31,7 +31,7 @@ const HowDoesItWork = () => {
               buttons, this tool provides a comprehensive and customizable
               experience.
             </ProjectDescriptionStyles>
-            <ProjectDescriptionStyles variant={"secondary"}>
+            <ProjectDescriptionStyles variant={'secondary'}>
               Once users have designed their content, they can easily schedule
               it to display on their site at their desired time using the
               scheduling feature. With the ability to schedule as many designs
@@ -45,9 +45,9 @@ const HowDoesItWork = () => {
             <ImageContainer>
               <FramedImage
                 src={
-                  "https://oceanapps.nyc3.cdn.digitaloceanspaces.com/screenshots/calendar.png"
+                  'https://oceanapps.nyc3.cdn.digitaloceanspaces.com/screenshots/calendar.png'
                 }
-                alt={"Content Scheduler Screenshot"}
+                alt={'Content Scheduler Screenshot'}
               />
             </ImageContainer>
           )}
@@ -122,7 +122,7 @@ const ProjectDescriptionStyles = styled(ProjectDescription)`
   max-width: 60rem;
 
   @media screen and (min-width: 65em) {
-    font-size: 2rem;
+    font-size: 1.6rem;
     max-width: 70rem;
   }
 `;

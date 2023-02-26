@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { Container } from "../../styles/Components";
-import { ProjectDescription } from "../../styles/Components";
+import React from 'react';
+import styled from 'styled-components';
+import { Container } from '../../styles/Components';
+import { ProjectDescription } from '../../styles/Components';
 
 const Challenges = () => {
   return (
@@ -9,7 +9,7 @@ const Challenges = () => {
       <InnerContainer>
         <SectionTitle>Some Challenges I Faced</SectionTitle>
         <Column>
-          <ProjectDescriptionStyles variant={"secondary"}>
+          <ProjectDescriptionStyles variant={'secondary'}>
             This project presented numerous opportunities for growth and
             learning, as I was continuously pushed to step outside of my comfort
             zone and tackle new tasks. As a result, I was able to significantly
@@ -17,7 +17,7 @@ const Challenges = () => {
             am grateful for the chance to challenge myself and exceed my own
             expectations.
           </ProjectDescriptionStyles>
-          <ProjectDescriptionStyles variant={"secondary"}>
+          <ProjectDescriptionStyles variant={'secondary'}>
             One of the key challenges I faced during this project was working
             with complex data structures. As the state of the app grew more
             intricate with the addition of new features, it became increasingly
@@ -28,7 +28,7 @@ const Challenges = () => {
             prefer using TypeScript over Vanilla JavaScript and can&apos;t see
             myself going back.
           </ProjectDescriptionStyles>
-          <ProjectDescriptionStyles variant={"secondary"}>
+          <ProjectDescriptionStyles variant={'secondary'}>
             This project has been a major milestone in my development journey. I
             am proud of what I built and grateful for the opportunity to learn
             and grow through the process. The challenges I faced only served to
@@ -78,7 +78,7 @@ const ProjectDescriptionStyles = styled(ProjectDescription)`
   max-width: 60rem;
 
   @media screen and (min-width: 65em) {
-    font-size: 2rem;
+    font-size: 1.6rem;
     max-width: 70rem;
   }
 `;
